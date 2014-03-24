@@ -14,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->openButtonLeft, SIGNAL(clicked()), this, SLOT(onClickedLeftOpen()));
     connect(ui->openButtonRight, SIGNAL(clicked()), this, SLOT(onClickedRightOpen()));
+    connect(ui->pushButtonSave, SIGNAL(clicked()), this, SLOT(onClickedDiffSave()));
 
 
     connect(ui->lineEditLeft,
@@ -57,4 +58,10 @@ void MainWindow::onClickedLeftOpen()
 void MainWindow::onClickedRightOpen()
 {
     emit ui->lineEditRight->setText(QFileDialog::getOpenFileName(this, tr("Open")));
+}
+
+void MainWindow::onClickedDiffSave()
+{
+    emit mainData->saveDiffToFile(QFileDialog::getSaveFileName(this, tr("Save"), "",
+                                                               tr("Patch File (*.patch)")));
 }

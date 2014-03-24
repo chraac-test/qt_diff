@@ -25,6 +25,7 @@ public:
 public slots:
     void onClickedLeftOpen();
     void onClickedRightOpen();
+    void onClickedDiffSave();
 
 
 private:

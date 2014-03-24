@@ -1,4 +1,5 @@
 #include "maindata.h"
+#include <QTextStream>
 #include <sstream>
 using namespace std;
 
@@ -46,6 +47,22 @@ void MainData::changeRightFile(const QString &file_name)
     rightFile->setFileName(file_name);
     openFiles();
 }
+
+void MainData::saveDiffToFile(const QString &file_name)
+{
+    if (!diffLib)
+    {
+        return;
+    }
+
+    QFile file(file_name);
+    if (file.open(QFile::WriteOnly | QFile::Text))
+    {
+        QTextStream out(&file);
+        diffLib->GetSes().Serialize(out);
+    }
+}
+
 
 bool MainData::openFiles()
 {

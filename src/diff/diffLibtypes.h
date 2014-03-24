@@ -51,7 +51,7 @@ namespace DiffLibrary
 
     static const std::string kAddString = "+";
     static const std::string kDeleteString = "-";
-    static const std::string kCommonString = " ";
+    static const std::string kCommonString = "";
 }
 
 #endif

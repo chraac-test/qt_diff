@@ -24,6 +24,7 @@ signals:
 public slots:
     void changeLeftFile(const QString &file_name);
     void changeRightFile(const QString &file_name);
+    void saveDiffToFile(const QString &file_name);
 
 
 private:
