@@ -14,9 +14,15 @@ TEMPLATE = app
 
 SOURCES += ../../src/qt/main.cpp \
     ../../src/qt/mainwindow.cpp \
-    ../../src/qt/codeeditor.cpp
+    ../../src/qt/codeeditor.cpp \
+    ../../src/qt/maindata.cpp
 
 HEADERS  += ../../src/qt/mainwindow.h \
-    ../../src/qt/codeeditor.h
+    ../../src/qt/codeeditor.h \
+    ../../src/qt/maindata.h \
+    ../../src/diff/diff.h \
+    ../../src/diff/diffLibrary.h \
+    ../../src/diff/diffLibtypes.h \
+    ../../src/diff/ses.h
 
 FORMS    += mainwindow.ui
