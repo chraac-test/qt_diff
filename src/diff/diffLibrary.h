@@ -6,9 +6,9 @@
 #include <algorithm>
 #include <utility>
 #include <iostream>
-#include <diffLibtypes.h>
-#include <ses.h>
-#include <diff.h>
+#include "diffLibtypes.h"
+#include "ses.h"
+#include "diff.h"
 
 
 #endif

@@ -141,7 +141,7 @@ namespace DiffLibrary
 
             auto x(param_m_.cbegin());
             auto y(param_n_.cbegin());
-            CoordinateType x_idx, y_idx;   // line number for Unified Format
+            CoordinateType x_idx, y_idx;   // line number
             CoordinateType px_idx, py_idx; // coordinates
             x_idx = y_idx = 1;
             px_idx = py_idx = 0;

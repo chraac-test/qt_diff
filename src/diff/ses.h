@@ -5,6 +5,29 @@
 
 namespace DiffLibrary
 {
+    template<typename _TyString>
+    struct StringHelper
+    {
+        typedef _TyString StringType;
+
+        inline StringType operator()(StringType str)
+        {
+            return str;
+        }
+    };
+
+    template<>
+    struct StringHelper<std::string>
+    {
+        typedef std::string StringType;
+
+        inline const StringType::value_type *operator()(const StringType &str)
+        {
+            return str.c_str();
+        }
+    };
+
+
     template<typename _TyData, 
         typename _TyStream = std::ostream>
     class SesSerialize
@@ -21,15 +44,17 @@ namespace DiffLibrary
 
         void operator()(const DataType &data)const
         {
+            typedef StringHelper<DataType::first_type> Helper;
+
             switch (data.second.editType) {
             case EditInfo::kAdd:
-                out_stream_ << kAddString.c_str() << data.first << endl;
+                out_stream_ << kAddString.c_str() << Helper()(data.first) << endl;
                 break;
             case EditInfo::kDelete:
-                out_stream_ << kDeleteString.c_str() << data.first << endl;
+                out_stream_ << kDeleteString.c_str() << Helper()(data.first) << endl;
                 break;
             case EditInfo::kCommon:
-                out_stream_ << kCommonString.c_str() << data.first << endl;
+                out_stream_ << kCommonString.c_str() << Helper()(data.first) << endl;
                 break;
             }
         }
@@ -78,11 +103,12 @@ namespace DiffLibrary
                     type)));
         }
 
-        void Serialize(std::ostream &out)const
+        template<typename _TyStream>
+        void Serialize(_TyStream &out)const
         {
             for_each(sequence_.begin(), 
                 sequence_.end(),
-                SesSerialize<EditPair>(out));
+                SesSerialize<EditPair, _TyStream>(out));
         }
 
 
